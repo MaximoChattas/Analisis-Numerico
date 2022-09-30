@@ -1,0 +1,3 @@
+/Users/maxichattas/Documents/UCC/2º Año/Análisis Numérico/Métodos/cmake-build-debug/CMakeFiles/Metodos.dir
+/Users/maxichattas/Documents/UCC/2º Año/Análisis Numérico/Métodos/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/maxichattas/Documents/UCC/2º Año/Análisis Numérico/Métodos/cmake-build-debug/CMakeFiles/rebuild_cache.dir

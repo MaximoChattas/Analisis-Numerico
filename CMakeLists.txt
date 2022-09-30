@@ -1,0 +1,1 @@
+add_executable(Metodos main.cpp Raíces/Raiz.cpp Raíces/Raiz.h "Sistemas de Ecuaciones/SistEcuaciones.cpp" "Sistemas de Ecuaciones/SistEcuaciones.h" "Interpolación de Polinomios/Interpolacion.cpp" "Interpolación de Polinomios/Interpolacion.h" "Derivación Numérica/Derivacion.cpp" "Derivación Numérica/Derivacion.h" funcionesMatriz.cpp funcionesMatriz.h)
