@@ -228,6 +228,34 @@ void polinomioNewton()
     }
 }
 
+void polinomioLagrange()
+{
+    double **datos = crearMatriz(Puntos , 2);
+    ingresoDatosAjusteCurvas(datos);
+
+    mostrarMatriz(datos , Puntos , 2);
+    std::cout << "\n\n";
+
+    for(int i = 0 ; i < Puntos ; i++)
+    {
+        double denominador = 1;
+        for (int j = 0 ; j < Puntos ; j++)
+        {
+            if (j != i)
+            {
+                denominador *= (datos[i][0] - datos[j][0]);
+                std::cout << "(x - " << datos[j][0] << ")";
+            }
+        }
+        std::cout << '(' << datos[i][1]/denominador << ')';
+
+        if (i != Puntos-1)
+        {
+            std::cout << " + ";
+        }
+    }
+}
+
 void trazadoraCubica()
 {
     double* x = crearArray(Puntos);
@@ -289,35 +317,6 @@ void trazadoraCubica()
         c[i] = z[i] - m[i]*c[i+1];
         b[i] = (a[i+1] - a[i])/h[i] - (h[i]*(c[i+1] + 2*c[i]))/3;
         d[i] = (c[i+1]-c[i])/(3*h[i]);
-    }
-
-}
-
-void polinomioLagrange()
-{
-    double **datos = crearMatriz(Puntos , 2);
-    ingresoDatosAjusteCurvas(datos);
-
-    mostrarMatriz(datos , Puntos , 2);
-    std::cout << "\n\n";
-
-    for(int i = 0 ; i < Puntos ; i++)
-    {
-        double denominador = 1;
-        for (int j = 0 ; j < Puntos ; j++)
-        {
-            if (j != i)
-            {
-                denominador *= (datos[i][0] - datos[j][0]);
-                std::cout << "(x - " << datos[j][0] << ")";
-            }
-        }
-        std::cout << '(' << datos[i][1]/denominador << ')';
-
-        if (i != Puntos-1)
-        {
-            std::cout << " + ";
-        }
     }
 
 }
