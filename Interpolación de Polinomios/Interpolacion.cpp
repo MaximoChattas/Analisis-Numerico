@@ -277,7 +277,20 @@ void polinomioNewton()
         }
     }
 
+    std::cout << "X\t\tY\n";
     mostrarMatriz(datos , Puntos , 2);
-    std::cout << "\n\n\n";
+    std::cout << "\n\nDiferencias:\n";
     mostrarMatriz(diferencias , Puntos-1 , Puntos-1);
+
+    std::cout << "f(x) = " << datos[0][1];
+
+    for(int i = 0 ; i < Puntos-1 ; i++)
+    {
+        std::cout << " + ";
+        std::cout << diferencias[0][i];
+        for (int j = 0 ; j < i+1 ; j++)
+        {
+            std::cout << "(x - " << datos[j][0] << ")";
+        }
+    }
 }
