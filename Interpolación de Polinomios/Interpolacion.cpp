@@ -7,16 +7,10 @@
 #include "Interpolacion.h"
 #include "../funcionesMatriz.h"
 
-#define Puntos 5
+#define Puntos 4
 
 void ingresoDatosAjusteCurvas(double **datos)
 {
-    //Poner en 0 Fila final de sumatoria
-    for(int i = 0 ; i < 4 ; i++)
-    {
-        datos[Puntos][i] = 0;
-    }
-
     for (int i = 0 ; i < Puntos ; i++)
     {
         for (int j = 0 ; j < 2 ; j++)
@@ -31,14 +25,7 @@ void ingresoDatosAjusteCurvas(double **datos)
             }
 
             std::cin >> datos[i][j];
-            datos[Puntos][j] += datos[i][j]; //Sumatoria Final
         }
-
-        datos[i][2] = pow(datos[i][0] , 2); //Columna X^2
-        datos[i][3] = datos[i][0] * datos[i][1]; //Columna X*Y
-
-        datos[Puntos][2] += datos[i][2];
-        datos[Puntos][3] += datos[i][3];
     }
 
 }
@@ -52,7 +39,6 @@ double a0(double** datos)
 double a1(double** datos)
 {
     return ((Puntos*datos[Puntos][3] - datos[Puntos][0]*datos[Puntos][1])/(Puntos*datos[Puntos][2] - pow(datos[Puntos][0] , 2)));
-
 }
 
 void modeloLineal()
@@ -60,12 +46,29 @@ void modeloLineal()
     double** datos = crearMatriz(Puntos+1 , 4);
     ingresoDatosAjusteCurvas(datos);
 
+    //Poner en 0 Fila final de sumatoria
+    for(int i = 0 ; i < 4 ; i++)
+    {
+        datos[Puntos][i] = 0;
+    }
+
+    for (int i = 0 ; i < Puntos ; i++)
+    {
+        datos[i][2] = pow(datos[i][0] , 2); //Columna X^2
+        datos[i][3] = datos[i][0] * datos[i][1]; //Columna X*Y
+
+        //Fila Sumatoria
+        datos[Puntos][0] += datos[i][0];
+        datos[Puntos][1] += datos[i][1];
+        datos[Puntos][2] += datos[i][2];
+        datos[Puntos][3] += datos[i][3];
+    }
+
     std::cout << "\n\n";
     std::cout << "x\t\ty\t\tx^2\t\txy\n";
     mostrarMatriz(datos , Puntos+1 , 4);
 
     std::cout << "\n\n" << "y = " << a1(datos) << "x + " << a0(datos);
-
 }
 
 void modeloExponencial()
@@ -73,15 +76,22 @@ void modeloExponencial()
     double** datos = crearMatriz(Puntos+1 , 4);
     ingresoDatosAjusteCurvas(datos);
 
-    datos[Puntos][1] = 0;
-    datos[Puntos][3] = 0;
+    //Poner en 0 Fila final de sumatoria
+    for(int i = 0 ; i < 4 ; i++)
+    {
+        datos[Puntos][i] = 0;
+    }
 
     for (int i = 0 ; i < Puntos ; i++)
     {
         datos[i][1] = log(datos[i][1]);
-        datos[Puntos][1] += datos[i][1];
-
+        datos[i][2] = pow(datos[i][0] , 2);
         datos[i][3] = datos[i][0] * datos[i][1];
+
+        //Fila Sumatoria
+        datos[Puntos][0] += datos[i][0];
+        datos[Puntos][1] += datos[i][1];
+        datos[Puntos][2] += datos[i][2];
         datos[Puntos][3] += datos[i][3];
     }
 
@@ -97,7 +107,6 @@ void modeloExponencial()
     std::cout << "a1 = " << A1 << '\n';
     std::cout << '\n';
     std::cout << "y = " << exp(A0) << "e^" << A1 << "x\n";
-
 }
 
 void modeloPotencial()
@@ -105,7 +114,7 @@ void modeloPotencial()
     double** datos = crearMatriz(Puntos+1 , 4);
     ingresoDatosAjusteCurvas(datos);
 
-    //Poner en 0 Fila final de sumatoria
+    //Poner en 0 Fila sumatoria
     for(int i = 0 ; i < 4 ; i++)
     {
         datos[Puntos][i] = 0;
@@ -114,15 +123,14 @@ void modeloPotencial()
     for (int i = 0 ; i < Puntos ; i++)
     {
         datos[i][0] = log10(datos[i][0]);
-        datos[Puntos][0] += datos[i][0];
-
         datos[i][1] = log10(datos[i][1]);
-        datos[Puntos][1] += datos[i][1];
-
         datos[i][2] = pow(datos[i][0] , 2);
-        datos[Puntos][2] += datos[i][2];
-
         datos[i][3] = datos[i][0] * datos[i][1];
+
+        //Fila Sumatoria
+        datos[Puntos][0] += datos[i][0];
+        datos[Puntos][1] += datos[i][1];
+        datos[Puntos][2] += datos[i][2];
         datos[Puntos][3] += datos[i][3];
     }
 
@@ -139,7 +147,6 @@ void modeloPotencial()
     std::cout << "a1 = " << A1 << '\n';
     std::cout << '\n';
     std::cout << "y = " << pow(10 , A0) << "x^" << A1 << "\n";
-
 }
 
 void modeloCrecimiento()
@@ -147,7 +154,7 @@ void modeloCrecimiento()
     double** datos = crearMatriz(Puntos+1 , 4);
     ingresoDatosAjusteCurvas(datos);
 
-    //Poner en 0 Fila final de sumatoria
+    //Poner en 0 Fila sumatoria
     for(int i = 0 ; i < 4 ; i++)
     {
         datos[Puntos][i] = 0;
@@ -156,15 +163,14 @@ void modeloCrecimiento()
     for (int i = 0 ; i < Puntos ; i++)
     {
         datos[i][0] = 1/datos[i][0];
-        datos[Puntos][0] += datos[i][0];
-
         datos[i][1] = 1/datos[i][1];
-        datos[Puntos][1] += datos[i][1];
-
         datos[i][2] = pow(datos[i][0] , 2);
-        datos[Puntos][2] += datos[i][2];
-
         datos[i][3] = datos[i][0] * datos[i][1];
+
+        //Fila Sumatoria
+        datos[Puntos][0] += datos[i][0];
+        datos[Puntos][1] += datos[i][1];
+        datos[Puntos][2] += datos[i][2];
         datos[Puntos][3] += datos[i][3];
     }
 
@@ -180,8 +186,9 @@ void modeloCrecimiento()
     std::cout << "a1 = " << A1 << '\n';
     std::cout << '\n';
     std::cout << "y = " << 1/A0 << "*x/(" << A1/A0 << " + x)\n";
-
 }
+
+
 
 void trazadoraCubica()
 {
@@ -246,4 +253,31 @@ void trazadoraCubica()
         d[i] = (c[i+1]-c[i])/(3*h[i]);
     }
 
+}
+
+void polinomioNewton()
+{
+    double **datos = crearMatriz(Puntos , 2);
+    double **diferencias = crearMatriz(Puntos-1 , Puntos-1);
+    ingresoDatosAjusteCurvas(datos);
+
+    for (int j = 0 ; j < Puntos-1 ; j++)
+    {
+        for (int i = 0 ; i < Puntos-1-j ; i++)
+        {
+            if(j>0) //Primera columna toma datos f(x)
+            {
+                diferencias[i][j] = (diferencias[i+1][j-1] - diferencias[i][j-1])/(datos[i+j+1][0] - datos[i][0]);
+            }
+
+            else
+            {
+                diferencias[i][j] = (datos[i+1][1]-datos[i][1])/(datos[i+1][0] - datos[i][0]);
+            }
+        }
+    }
+
+    mostrarMatriz(datos , Puntos , 2);
+    std::cout << "\n\n\n";
+    mostrarMatriz(diferencias , Puntos-1 , Puntos-1);
 }

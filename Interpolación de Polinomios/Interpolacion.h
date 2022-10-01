@@ -19,6 +19,8 @@ void modeloPotencial();
 
 void modeloCrecimiento();
 
+void polinomioNewton();
+
 void trazadoraCubica();
 
 #endif //MÉTODOS_INTERPOLACION_H
