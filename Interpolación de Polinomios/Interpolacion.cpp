@@ -188,7 +188,45 @@ void modeloCrecimiento()
     std::cout << "y = " << 1/A0 << "*x/(" << A1/A0 << " + x)\n";
 }
 
+void polinomioNewton()
+{
+    double **datos = crearMatriz(Puntos , 2);
+    double **diferencias = crearMatriz(Puntos-1 , Puntos-1);
+    ingresoDatosAjusteCurvas(datos);
 
+    for (int j = 0 ; j < Puntos-1 ; j++)
+    {
+        for (int i = 0 ; i < Puntos-1-j ; i++)
+        {
+            if(j>0) //Primera columna toma datos f(x)
+            {
+                diferencias[i][j] = (diferencias[i+1][j-1] - diferencias[i][j-1])/(datos[i+j+1][0] - datos[i][0]);
+            }
+
+            else
+            {
+                diferencias[i][j] = (datos[i+1][1]-datos[i][1])/(datos[i+1][0] - datos[i][0]);
+            }
+        }
+    }
+
+    std::cout << "X\t\tY\n";
+    mostrarMatriz(datos , Puntos , 2);
+    std::cout << "\n\nDiferencias:\n";
+    mostrarMatriz(diferencias , Puntos-1 , Puntos-1);
+
+    std::cout << "f(x) = " << datos[0][1];
+
+    for(int i = 0 ; i < Puntos-1 ; i++)
+    {
+        std::cout << " + ";
+        std::cout << diferencias[0][i];
+        for (int j = 0 ; j < i+1 ; j++)
+        {
+            std::cout << "(x - " << datos[j][0] << ")";
+        }
+    }
+}
 
 void trazadoraCubica()
 {
@@ -255,42 +293,31 @@ void trazadoraCubica()
 
 }
 
-void polinomioNewton()
+void polinomioLagrange()
 {
     double **datos = crearMatriz(Puntos , 2);
-    double **diferencias = crearMatriz(Puntos-1 , Puntos-1);
     ingresoDatosAjusteCurvas(datos);
 
-    for (int j = 0 ; j < Puntos-1 ; j++)
-    {
-        for (int i = 0 ; i < Puntos-1-j ; i++)
-        {
-            if(j>0) //Primera columna toma datos f(x)
-            {
-                diferencias[i][j] = (diferencias[i+1][j-1] - diferencias[i][j-1])/(datos[i+j+1][0] - datos[i][0]);
-            }
-
-            else
-            {
-                diferencias[i][j] = (datos[i+1][1]-datos[i][1])/(datos[i+1][0] - datos[i][0]);
-            }
-        }
-    }
-
-    std::cout << "X\t\tY\n";
     mostrarMatriz(datos , Puntos , 2);
-    std::cout << "\n\nDiferencias:\n";
-    mostrarMatriz(diferencias , Puntos-1 , Puntos-1);
+    std::cout << "\n\n";
 
-    std::cout << "f(x) = " << datos[0][1];
-
-    for(int i = 0 ; i < Puntos-1 ; i++)
+    for(int i = 0 ; i < Puntos ; i++)
     {
-        std::cout << " + ";
-        std::cout << diferencias[0][i];
-        for (int j = 0 ; j < i+1 ; j++)
+        double denominador = 1;
+        for (int j = 0 ; j < Puntos ; j++)
         {
-            std::cout << "(x - " << datos[j][0] << ")";
+            if (j != i)
+            {
+                denominador *= (datos[i][0] - datos[j][0]);
+                std::cout << "(x - " << datos[j][0] << ")";
+            }
+        }
+        std::cout << '(' << datos[i][1]/denominador << ')';
+
+        if (i != Puntos-1)
+        {
+            std::cout << " + ";
         }
     }
+
 }

@@ -21,6 +21,8 @@ void modeloCrecimiento();
 
 void polinomioNewton();
 
+void polinomioLagrange();
+
 void trazadoraCubica();
 
 #endif //MÉTODOS_INTERPOLACION_H
