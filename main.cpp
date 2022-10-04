@@ -17,9 +17,7 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    polinomioNewton();
-    std::cout << "\n\n";
-    polinomioLagrange();
+    trazadoraCubica();
 
 //    //Matriz para Derivacion Numerica
 //    double** datos = crearMatriz(Puntos , 2);

@@ -27,13 +27,11 @@ void ingresoDatosAjusteCurvas(double **datos)
             std::cin >> datos[i][j];
         }
     }
-
 }
 
 double a0(double** datos)
 {
     return datos[Puntos][1]/Puntos - a1(datos) * datos[Puntos][0]/Puntos;
-
 }
 
 double a1(double** datos)
@@ -258,8 +256,7 @@ void polinomioLagrange()
 
 void trazadoraCubica()
 {
-    double* x = crearArray(Puntos);
-    double* y = crearArray(Puntos);
+    double **datos = crearMatriz(Puntos , 2);
     double* h = crearArray(Puntos-1);
     double* a = crearArray(Puntos-1);
     double* l = crearArray(Puntos);
@@ -269,28 +266,21 @@ void trazadoraCubica()
     double* b = crearArray(Puntos);
     double* d = crearArray(Puntos);
 
-    a[0] = 0;
 
+    ingresoDatosAjusteCurvas(datos);
 
-    for (int i = 0 ; i < Puntos ; i++)
-    {
-        std::cout << "x" << i << ' ';
-        std::cin >> x[i];
-
-        std::cout << "y" << i << ' ';
-        std::cin >> y[i];
-    }
-
-    //Paso 1: Vector h(Paso de intervalo)
+    std::cout << "\nPaso 1:\n";
     for (int i = 0 ; i < Puntos-1 ; i++)
     {
-        h[i] = x[i + 1] - x[i];
+        h[i] = datos[i + 1][0] - datos[i][0];
+        std::cout << "h[" << i << "] = " << h[i] << '\n';
     }
 
-    //Paso 2: vector a
+    std::cout << "\nPaso 2:\n";
     for (int i = 1 ; i < Puntos-1 ; i++)
     {
-        a[i] = 3/h[i]*(y[i+1] - y[i]) - 3/h[i-1]*(y[i] - y[i-1]);
+        a[i] = 3/h[i]*(datos[i+1][1] - datos[i][1]) - 3/h[i-1]*(datos[i][1] - datos[i-1][1]);
+        std::cout << "a[" << i << "] = " << a[i] << '\n';
     }
 
     //Paso 3:
@@ -298,12 +288,17 @@ void trazadoraCubica()
     m[0] = 0;
     z[0] = 0;
 
-    //Paso 4:
+    std::cout << "\nPaso 4:\n";
     for(int i = 1 ; i < Puntos-1 ; i++)
     {
-        l[i] = 2*(x[i+1] - x[i-1]) - h[i-1]*m[i-1];
+        l[i] = 2*(datos[i+1][0] - datos[i-1][0]) - h[i-1]*m[i-1];
+        std::cout << "l[" << i << "] = " << l[i] << '\n';
+
         m[i] = h[i]/l[i];
+        std::cout << "m[" << i << "] = " << m[i] << '\n';
+
         z[i] = (a[i] - h[i-1]*z[i-1])/l[i];
+        std::cout << "z[" << i << "] = " << z[i] << '\n';
     }
 
     //Paso 5:
@@ -311,12 +306,25 @@ void trazadoraCubica()
     z[Puntos-1] = 0;
     c[Puntos-1] = 0;
 
-    //Paso 6:
+    std::cout << "\nPaso 6:\n";
     for(int i = Puntos-2 ; i >= 0 ; i--)
     {
         c[i] = z[i] - m[i]*c[i+1];
-        b[i] = (a[i+1] - a[i])/h[i] - (h[i]*(c[i+1] + 2*c[i]))/3;
+        std::cout << "c[" << i << "] = " << c[i] << '\n';
+
+        b[i] = (datos[i+1][1] - datos[i][1])/h[i] - (h[i]*(c[i+1] + 2*c[i]))/3;
+        std::cout << "b[" << i << "] = " << b[i] << '\n';
+
         d[i] = (c[i+1]-c[i])/(3*h[i]);
+        std::cout << "d[" << i << "] = " << d[i] << '\n';
     }
 
+    std::cout << "\n\n";
+
+    //Paso 7:
+    for (int i = 0 ; i < Puntos-1 ; i++)
+    {
+        std::cout << "S" << i << "(x) = " << datos[i][1] << " + " << b[i] << "(x - " << datos[i][0] << ") + " <<
+        c[i] << "(x - " << datos[i][0] << ")^2 + " << d[i] << "(x - " << datos[i][0] << ")^3\n";
+    }
 }
