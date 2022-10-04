@@ -17,7 +17,7 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    trazadoraCubica();
+    trazadoraCubicaNatural();
 
 //    //Matriz para Derivacion Numerica
 //    double** datos = crearMatriz(Puntos , 2);

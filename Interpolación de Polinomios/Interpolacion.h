@@ -23,6 +23,8 @@ void polinomioNewton();
 
 void polinomioLagrange();
 
-void trazadoraCubica();
+void trazadoraCubicaNatural();
+
+void trazadoraCubicaCondicionada();
 
 #endif //MÉTODOS_INTERPOLACION_H

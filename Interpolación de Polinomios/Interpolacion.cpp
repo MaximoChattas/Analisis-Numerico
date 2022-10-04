@@ -254,7 +254,7 @@ void polinomioLagrange()
     }
 }
 
-void trazadoraCubica()
+void trazadoraCubicaNatural()
 {
     double **datos = crearMatriz(Puntos , 2);
     double* h = crearArray(Puntos-1);
@@ -283,10 +283,16 @@ void trazadoraCubica()
         std::cout << "a[" << i << "] = " << a[i] << '\n';
     }
 
-    //Paso 3:
+    std::cout << "\nPaso 3:\n";
+
     l[0] = 1;
+    std::cout << "l[" << 0 << "] = " << l[0] << '\n';
+
     m[0] = 0;
+    std::cout << "m[" << 0 << "] = " << m[0] << '\n';
+
     z[0] = 0;
+    std::cout << "z[" << 0 << "] = " << z[0] << '\n';
 
     std::cout << "\nPaso 4:\n";
     for(int i = 1 ; i < Puntos-1 ; i++)
@@ -301,10 +307,16 @@ void trazadoraCubica()
         std::cout << "z[" << i << "] = " << z[i] << '\n';
     }
 
-    //Paso 5:
+    std::cout << "\nPaso 5:\n";
+
     l[Puntos-1] = 1;
+    std::cout << "l[" << Puntos-1 << "] = " << l[Puntos-1] << '\n';
+
     z[Puntos-1] = 0;
+    std::cout << "z[" << Puntos-1 << "] = " << z[Puntos-1] << '\n';
+
     c[Puntos-1] = 0;
+    std::cout << "c[" << Puntos-1 << "] = " << c[Puntos-1] << '\n';
 
     std::cout << "\nPaso 6:\n";
     for(int i = Puntos-2 ; i >= 0 ; i--)
@@ -326,5 +338,105 @@ void trazadoraCubica()
     {
         std::cout << "S" << i << "(x) = " << datos[i][1] << " + " << b[i] << "(x - " << datos[i][0] << ") + " <<
         c[i] << "(x - " << datos[i][0] << ")^2 + " << d[i] << "(x - " << datos[i][0] << ")^3\n";
+    }
+}
+
+void trazadoraCubicaCondicionada()
+{
+    double **datos = crearMatriz(Puntos , 2);
+    double* h = crearArray(Puntos-1);
+    double* a = crearArray(Puntos);
+    double* l = crearArray(Puntos);
+    double* m = crearArray(Puntos-1);
+    double* z = crearArray(Puntos);
+    double* c = crearArray(Puntos);
+    double* b = crearArray(Puntos);
+    double* d = crearArray(Puntos);
+    double fp0 , fpn;
+
+    ingresoDatosAjusteCurvas(datos);
+
+    std::cout << "Ingrese el valor de la primera derivada en X0\n";
+    std::cin >> fp0;
+
+    std::cout << "Ingrese el valor de la primera derivada en Xn\n";
+    std::cin >> fpn;
+
+    std::cout << "\nPaso 1:\n";
+    for (int i = 0 ; i < Puntos-1 ; i++)
+    {
+        h[i] = datos[i + 1][0] - datos[i][0];
+        std::cout << "h[" << i << "] = " << h[i] << '\n';
+    }
+
+    std::cout << "\nPaso 2:\n";
+    a[0] = 3/h[0]*(datos[1][1] - datos[0][1]) - 3*fp0;
+    std::cout << "a[" << 0 << "] = " << a[0] << '\n';
+
+    a[Puntos-1] = 3*fpn - 3*(datos[Puntos-1][1] - datos[Puntos-2][1])/h[Puntos-2];
+    std::cout << "a[" << Puntos-1 << "] = " << a[Puntos-1] << '\n';
+
+    std::cout << "\nPaso 3:\n";
+    for (int i = 1 ; i < Puntos-1 ; i++)
+    {
+        a[i] = 3/h[i]*(datos[i+1][1] - datos[i][1]) - 3/h[i-1]*(datos[i][1] - datos[i-1][1]);
+        std::cout << "a[" << i << "] = " << a[i] << '\n';
+    }
+
+    std::cout << "\nPaso 4:\n";
+
+    l[0] = 2*h[0];
+    std::cout << "l[" << 0 << "] = " << l[0] << '\n';
+
+    m[0] = 0.5;
+    std::cout << "m[" << 0 << "] = " << m[0] << '\n';
+
+    z[0] = a[0]/l[0];
+    std::cout << "z[" << 0 << "] = " << z[0] << '\n';
+
+    std::cout << "\nPaso 5:\n";
+    for(int i = 1 ; i < Puntos-1 ; i++)
+    {
+        l[i] = 2*(datos[i+1][0] - datos[i-1][0]) - h[i-1]*m[i-1];
+        std::cout << "l[" << i << "] = " << l[i] << '\n';
+
+        m[i] = h[i]/l[i];
+        std::cout << "m[" << i << "] = " << m[i] << '\n';
+
+        z[i] = (a[i] - h[i-1]*z[i-1])/l[i];
+        std::cout << "z[" << i << "] = " << z[i] << '\n';
+    }
+
+    std::cout << "\nPaso 6:\n";
+
+    l[Puntos-1] = h[Puntos-2]*(2 - m[Puntos-2]);
+    std::cout << "l[" << Puntos-1 << "] = " << l[Puntos-1] << '\n';
+
+    z[Puntos-1] = (a[Puntos-1] - h[Puntos-2]*z[Puntos-2])/l[Puntos-1];
+    std::cout << "z[" << Puntos-1 << "] = " << a[Puntos-1] << '\n';
+
+    c[Puntos-1] = z[Puntos-1];
+    std::cout << "c[" << Puntos-1 << "] = " << c[Puntos-1] << '\n';
+
+    std::cout << "\nPaso 7:\n";
+    for(int i = Puntos-2 ; i >= 0 ; i--)
+    {
+        c[i] = z[i] - m[i]*c[i+1];
+        std::cout << "c[" << i << "] = " << c[i] << '\n';
+
+        b[i] = (datos[i+1][1] - datos[i][1])/h[i] - (h[i]*(c[i+1] + 2*c[i]))/3;
+        std::cout << "b[" << i << "] = " << b[i] << '\n';
+
+        d[i] = (c[i+1]-c[i])/(3*h[i]);
+        std::cout << "d[" << i << "] = " << d[i] << '\n';
+    }
+
+    std::cout << "\n\n";
+
+    //Paso 8:
+    for (int i = 0 ; i < Puntos-1 ; i++)
+    {
+        std::cout << "S" << i << "(x) = " << datos[i][1] << " + " << b[i] << "(x - " << datos[i][0] << ") + " <<
+                  c[i] << "(x - " << datos[i][0] << ")^2 + " << d[i] << "(x - " << datos[i][0] << ")^3\n";
     }
 }
