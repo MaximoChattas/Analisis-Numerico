@@ -284,7 +284,6 @@ void trazadoraCubicaNatural()
     }
 
     std::cout << "\nPaso 3:\n";
-
     l[0] = 1;
     std::cout << "l[" << 0 << "] = " << l[0] << '\n';
 
@@ -308,7 +307,6 @@ void trazadoraCubicaNatural()
     }
 
     std::cout << "\nPaso 5:\n";
-
     l[Puntos-1] = 1;
     std::cout << "l[" << Puntos-1 << "] = " << l[Puntos-1] << '\n';
 
@@ -384,7 +382,6 @@ void trazadoraCubicaCondicionada()
     }
 
     std::cout << "\nPaso 4:\n";
-
     l[0] = 2*h[0];
     std::cout << "l[" << 0 << "] = " << l[0] << '\n';
 
@@ -408,7 +405,6 @@ void trazadoraCubicaCondicionada()
     }
 
     std::cout << "\nPaso 6:\n";
-
     l[Puntos-1] = h[Puntos-2]*(2 - m[Puntos-2]);
     std::cout << "l[" << Puntos-1 << "] = " << l[Puntos-1] << '\n';
 

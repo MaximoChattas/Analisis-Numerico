@@ -24,7 +24,6 @@ void ingresoDatosSistEcuaciones(double** A , double* B)
         std::cout << "T Independiente " << i+1 << ' ';
         std::cin >> B[i];
     }
-
 }
 
 void mostrarEcuaciones(double** A , double* B)
@@ -38,7 +37,6 @@ void mostrarEcuaciones(double** A , double* B)
 
         std::cout << " = " << B[i] << '\n';
     }
-
 }
 
 void verifCero(double** A , double* B)
@@ -175,7 +173,6 @@ void eliminacionGaussiana()
     {
         std::cout << "X" << i+1 << "= " << x[i] << '\n';
     }
-
 }
 
 void gaussSeidel()
@@ -329,6 +326,4 @@ void LU()
     {
         std::cout << "x" << i+1 << " = " << x[i] << '\n';
     }
-
-
 }

@@ -28,7 +28,6 @@ void mostrarArray(double *array)
         std::cout << array[i] << '\t';
     }
     std::cout << '\n';
-
 }
 
 void mostrarMatriz(double **matriz, int filas, int columnas)
@@ -41,5 +40,4 @@ void mostrarMatriz(double **matriz, int filas, int columnas)
         }
         std::cout << '\n';
     }
-
 }
