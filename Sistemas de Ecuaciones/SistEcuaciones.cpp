@@ -8,7 +8,7 @@
 #include "../funcionesMatriz.h"
 
 #define DIMENSION 3
-#define TOLERANCIA pow(10 , -3)
+#define TOLERANCIA pow(10 , -4)
 
 void ingresoDatosSistEcuaciones(double** A , double* B)
 {
@@ -189,6 +189,7 @@ void gaussSeidel()
 
     verifCero(A , B);
 
+
     //Inicializar en 0 las variables
     for (int i = 0 ; i < DIMENSION ; i++)
     {
@@ -203,7 +204,7 @@ void gaussSeidel()
     }
     std::cout << '\n';
 
-    while (true)
+    while (!verificador)
     {
         //Mostrar Datos
         for (int i = 0 ; i < DIMENSION ; i++)
@@ -211,11 +212,6 @@ void gaussSeidel()
             std::cout << x[i] << '\t' << ERROR[i] << '\t';
         }
         std::cout << '\n';
-
-        if (verificador)
-        {
-            break;
-        }
 
         for (int i = 0 ; i < DIMENSION ; i++)
         {

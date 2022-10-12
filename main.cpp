@@ -7,7 +7,6 @@
 #include "Sistemas de Ecuaciones/SistEcuaciones.h"
 #include "Interpolación de Polinomios/Interpolacion.h"
 #include "Derivación Numérica/Derivacion.h"
-#include "Interpolación de Polinomios/Interpolacion.h"
 
 /*Encontrar raices de funciones:
  * Modificar f , g , df
@@ -17,7 +16,10 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    trazadoraCubicaNatural();
+//    scan(0 , 10);
+    newtonRaphson(9.4);
+//    secante(9 , 10);
+
 
 //    //Matriz para Derivacion Numerica
 //    double** datos = crearMatriz(Puntos , 2);

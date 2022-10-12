@@ -7,7 +7,7 @@
 #include "Interpolacion.h"
 #include "../funcionesMatriz.h"
 
-#define Puntos 4
+#define Puntos 9
 
 void ingresoDatosAjusteCurvas(double **datos)
 {

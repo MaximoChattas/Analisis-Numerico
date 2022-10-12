@@ -10,13 +10,8 @@
 
 double f(double x)
 {
-    //INSERTAR SINGULARIDADES DE FUNCION
-    if(false)
-    {
-        throw std::invalid_argument("ERROR\n");
-    }
     //INSERTAR FUNCIÓN AQUÍ
-    return -23.33 + 79.35 * x - 88.09 * pow(x,2) + 41.6 * pow(x,3) - 8.68 * pow(x,4) + 0.658 * pow(x , 5);
+    return exp(0.1*x)*std::sin(x);
 }
 
 double g(double x)
@@ -28,7 +23,7 @@ double g(double x)
 double df(double x)
 {
 //    INSERTAR DERIVADA DE f(x) AQUÍ
-    return -1.748 * x + 1.75;
+    return 0.1 * exp(0.1*x) * std::sin(x) + exp(0.1*x) * std::cos(x);
 }
 
 void scan (double a , double b)
@@ -119,13 +114,13 @@ double newtonRaphson(double xi) {
 
     std::cout << "Metodo Newton Raphson\n\n";
 
-    std::cout << "xi\t\tf(xi)\t|E|\n";
+    std::cout << "xi\t\tf(xi)\tf'(xi)\t|E|\n";
 
     double error = 0;
 
     for (int i = 0 ; i < 100 ; i++)
     {
-        std::cout << xi << '\t' << f(xi) << '\t' << error << '\n';
+        std::cout << xi << '\t' << f(xi) << '\t' << df(xi) << '\t' << error << '\n';
 
         double prev = xi;
         xi = xi - f(xi)/df(xi);
