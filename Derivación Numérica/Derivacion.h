@@ -30,5 +30,13 @@ double Centrada3Puntos(double **datos, int indice);
 
 void derivacion3Puntos();
 
+double Progresiva5Puntos(double **datos, int indice);
+
+double Regresiva5Puntos(double **datos, int indice);
+
+double Centrada5Puntos(double **datos, int indice);
+
+void derivacion5Puntos();
+
 
 #endif //MÉTODOS_DERIVACION_H

@@ -109,24 +109,66 @@ double Centrada3Puntos(double **datos, int indice)
 
 void derivacion3Puntos()
 {
-    double **datos = crearMatriz(n+1 , 2);
+    double **datos = crearMatriz(n , 2);
     ingresoDatosDerivacionAutomatico(datos);
     std::cout << "X\tf(x)\tf'(x)\n";
     for (int i = 0 ; i < n ; i++)
     {
         if (i > 0 && i < n-1)
         {
-            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Centrada3Puntos(datos , i);
+            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Centrada3Puntos(datos , i) << "\t Centrada";
         }
 
         else if (i == 0)
         {
-            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Progresiva3Puntos(datos , i);
+            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Progresiva3Puntos(datos , i) << "\t Progresiva";
         }
 
         else
         {
-            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Regresiva3Puntos(datos , i);
+            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Regresiva3Puntos(datos , i) << "\t Regresiva";
+        }
+
+        std::cout << '\n';
+    }
+}
+
+double Progresiva5Puntos(double **datos, int indice)
+{
+    return (-25*datos[indice][1] + 48*datos[indice+1][1] - 36*datos[indice+2][1] + 16*datos[indice+3][1] -
+    3*datos[indice+4][1])/(12*(datos[indice+1][0]-datos[indice][0]));
+}
+
+double Regresiva5Puntos(double **datos, int indice) {
+    return (3*datos[indice-4][1] - 16*datos[indice-3][1] + 36*datos[indice-2][1] - 48*datos[indice-1][1] +
+    25*datos[indice][1])/(12*(datos[indice][0]-datos[indice-1][0]));
+}
+
+double Centrada5Puntos(double **datos, int indice) {
+    return (datos[indice-2][1] - 8*datos[indice-1][1] + 8*datos[indice+1][1] - datos[indice+2][1])/
+            (12*(datos[indice+1][0]-datos[indice][0]));
+}
+
+void derivacion5Puntos()
+{
+    double **datos = crearMatriz(n , 2);
+    ingresoDatosDerivacionAutomatico(datos);
+    std::cout << "X\t\tf(x)\tf'(x)\n";
+    for (int i = 0 ; i < n ; i++)
+    {
+        if (i > 1 && i < n-2)
+        {
+            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Centrada5Puntos(datos , i) << "\t Centrada";
+        }
+
+        else if (i <= 1)
+        {
+            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Progresiva5Puntos(datos , i) << "\t Progresiva";
+        }
+
+        else
+        {
+            std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Regresiva5Puntos(datos , i) << "\t Regresiva";
         }
 
         std::cout << '\n';

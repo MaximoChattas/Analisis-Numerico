@@ -17,13 +17,7 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-
-    derivacion3Puntos();
-
-//    scan(0 , 10);
-//    newtonRaphson(9.4);
-//    secante(9 , 10);
-
+    derivacion5Puntos();
 
     return 0;
 }
