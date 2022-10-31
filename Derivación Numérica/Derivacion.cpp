@@ -33,23 +33,25 @@ void ingresoDatosDerivacionManual(double **datos)
     }
 }
 
-//void ingresoDatosDerivacionAutomatico(double **datos)
-//{
-//    double xi , xf;
-//    std::cout << "X inicial: ";
-//    std::cin >> xi;
-//
-//    std::cout << "X final: ";
-//    std::cin >> xf;
-//
-//    double paso = (xf-xi)/h;
-//
-//    for (int i = 0 ; i < paso ; i++)
-//    {
-//        datos[0][i] = xi+h*i;
-//        datos[1][i] = f0(datos[0][i]);
-//    }
-//}
+void ingresoDatosDerivacionAutomatico(double **datos)
+{
+    float xi , xf;
+    std::cout << "X inicial: ";
+    std::cin >> xi;
+
+    std::cout << "X final: ";
+    std::cin >> xf;
+
+    int i = 0;
+    do {
+        datos[i][0] = xi;
+        datos[i][1] = f0(xi);
+
+        xi += h;
+        i++;
+
+    }while(i < n);
+}
 
 double Progresiva2Puntos(double** datos , int indice)
 {
@@ -108,7 +110,7 @@ double Centrada3Puntos(double **datos, int indice)
 void derivacion3Puntos()
 {
     double **datos = crearMatriz(n+1 , 2);
-    ingresoDatosDerivacionManual(datos);
+    ingresoDatosDerivacionAutomatico(datos);
     std::cout << "X\tf(x)\tf'(x)\n";
     for (int i = 0 ; i < n ; i++)
     {
