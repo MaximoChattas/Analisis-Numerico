@@ -82,6 +82,12 @@ build CMakeFiles/Metodos.dir/funcionesMatriz.cpp.o: CXX_COMPILER__Metodos_Debug 
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir
 
+build CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Integración$ Numérica/Integracion.cpp || cmake_object_order_depends_target_Metodos
+  DEP_FILE = CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
+  OBJECT_DIR = CMakeFiles/Metodos.dir
+  OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Integración_Numérica
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Metodos
@@ -90,7 +96,7 @@ build CMakeFiles/Metodos.dir/funcionesMatriz.cpp.o: CXX_COMPILER__Metodos_Debug 
 #############################################
 # Link the executable Metodos
 
-build Metodos: CXX_EXECUTABLE_LINKER__Metodos_Debug CMakeFiles/Metodos.dir/main.cpp.o CMakeFiles/Metodos.dir/Raíces/Raiz.cpp.o CMakeFiles/Metodos.dir/Sistemas_de_Ecuaciones/SistEcuaciones.cpp.o CMakeFiles/Metodos.dir/Interpolación_de_Polinomios/Interpolacion.cpp.o CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o CMakeFiles/Metodos.dir/funcionesMatriz.cpp.o
+build Metodos: CXX_EXECUTABLE_LINKER__Metodos_Debug CMakeFiles/Metodos.dir/main.cpp.o CMakeFiles/Metodos.dir/Raíces/Raiz.cpp.o CMakeFiles/Metodos.dir/Sistemas_de_Ecuaciones/SistEcuaciones.cpp.o CMakeFiles/Metodos.dir/Interpolación_de_Polinomios/Interpolacion.cpp.o CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o CMakeFiles/Metodos.dir/funcionesMatriz.cpp.o CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = CMakeFiles/Metodos.dir
   POST_BUILD = :

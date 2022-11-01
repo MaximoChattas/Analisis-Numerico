@@ -9,26 +9,6 @@
 
 #define Puntos 9
 
-void ingresoDatosAjusteCurvas(double **datos)
-{
-    for (int i = 0 ; i < Puntos ; i++)
-    {
-        for (int j = 0 ; j < 2 ; j++)
-        {
-            if (j==0)
-            {
-                std::cout << "X " << i << ": ";
-            }
-            else
-            {
-                std::cout << "Y " << i << ": ";
-            }
-
-            std::cin >> datos[i][j];
-        }
-    }
-}
-
 double a0(double** datos)
 {
     return datos[Puntos][1]/Puntos - a1(datos) * datos[Puntos][0]/Puntos;
@@ -42,7 +22,7 @@ double a1(double** datos)
 void modeloLineal()
 {
     double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     //Poner en 0 Fila final de sumatoria
     for(int i = 0 ; i < 4 ; i++)
@@ -72,7 +52,7 @@ void modeloLineal()
 void modeloExponencial()
 {
     double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     //Poner en 0 Fila final de sumatoria
     for(int i = 0 ; i < 4 ; i++)
@@ -110,7 +90,7 @@ void modeloExponencial()
 void modeloPotencial()
 {
     double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     //Poner en 0 Fila sumatoria
     for(int i = 0 ; i < 4 ; i++)
@@ -150,7 +130,7 @@ void modeloPotencial()
 void modeloCrecimiento()
 {
     double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     //Poner en 0 Fila sumatoria
     for(int i = 0 ; i < 4 ; i++)
@@ -190,7 +170,7 @@ void polinomioNewton()
 {
     double **datos = crearMatriz(Puntos , 2);
     double **diferencias = crearMatriz(Puntos-1 , Puntos-1);
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     for (int j = 0 ; j < Puntos-1 ; j++)
     {
@@ -229,7 +209,7 @@ void polinomioNewton()
 void polinomioLagrange()
 {
     double **datos = crearMatriz(Puntos , 2);
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     mostrarMatriz(datos , Puntos , 2);
     std::cout << "\n\n";
@@ -267,7 +247,7 @@ void trazadoraCubicaNatural()
     double* d = crearArray(Puntos);
 
 
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     std::cout << "\nPaso 1:\n";
     for (int i = 0 ; i < Puntos-1 ; i++)
@@ -352,7 +332,7 @@ void trazadoraCubicaCondicionada()
     double* d = crearArray(Puntos);
     double fp0 , fpn;
 
-    ingresoDatosAjusteCurvas(datos);
+    ingresoDatos(datos , Puntos);
 
     std::cout << "Ingrese el valor de la primera derivada en X0\n";
     std::cin >> fp0;

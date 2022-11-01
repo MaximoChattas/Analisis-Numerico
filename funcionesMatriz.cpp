@@ -41,3 +41,23 @@ void mostrarMatriz(double **matriz, int filas, int columnas)
         std::cout << '\n';
     }
 }
+
+void ingresoDatos(double **datos , int cant)
+{
+    for (int i = 0 ; i < cant ; i++)
+    {
+        for (int j = 0 ; j < 2 ; j++)
+        {
+            if (j==0)
+            {
+                std::cout << "X " << i << ": ";
+            }
+            else
+            {
+                std::cout << "Y " << i << ": ";
+            }
+
+            std::cin >> datos[i][j];
+        }
+    }
+}

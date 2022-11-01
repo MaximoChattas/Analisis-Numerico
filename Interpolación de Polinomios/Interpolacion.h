@@ -5,8 +5,6 @@
 #ifndef MÉTODOS_INTERPOLACION_H
 #define MÉTODOS_INTERPOLACION_H
 
-void ingresoDatosAjusteCurvas(double **datos);
-
 double a0(double **datos);
 
 double a1(double **datos);

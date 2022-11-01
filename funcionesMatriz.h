@@ -13,4 +13,6 @@ void mostrarArray(double* array);
 
 void mostrarMatriz(double** matriz , int filas , int columnas);
 
+void ingresoDatos(double **datos , int cant);
+
 #endif //MÉTODOS_FUNCIONESMATRIZ_H
