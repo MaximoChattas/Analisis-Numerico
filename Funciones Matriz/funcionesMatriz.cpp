@@ -89,5 +89,5 @@ void ingresoDatosAutomatico(double **datos)
 double f0(double x)
 {
     //Funcion f
-    return 1 - x - 4*pow(x , 3) + 3*pow(x , 5);
+    return x * exp(2*x);
 }

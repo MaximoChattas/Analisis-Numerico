@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "Derivacion.h"
-#include "../funcionesMatriz.h"
+#include "../Funciones Matriz/funcionesMatriz.h"
 #include <cmath>
 
 double Progresiva2Puntos(double** datos , int indice)

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cmath>
 #include "SistEcuaciones.h"
-#include "../funcionesMatriz.h"
+#include "../Funciones Matriz/funcionesMatriz.h"
 
 void ingresoDatosSistEcuaciones(double** A , double* B)
 {

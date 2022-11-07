@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cmath>
 #include "Interpolacion.h"
-#include "../funcionesMatriz.h"
+#include "../Funciones Matriz/funcionesMatriz.h"
 
 double a0(double** datos)
 {

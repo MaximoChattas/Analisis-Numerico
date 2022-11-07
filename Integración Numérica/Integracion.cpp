@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "Integracion.h"
-#include "../funcionesMatriz.h"
+#include "../Funciones Matriz/funcionesMatriz.h"
 
 double trapecios()
 {
