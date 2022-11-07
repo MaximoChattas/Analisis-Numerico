@@ -5,6 +5,8 @@
 #ifndef METODOS_METODOS_H
 #define METODOS_METODOS_H
 
+#define Tolerancia pow(10 , -3)
+
 double f(double x);
 
 double g(double x);

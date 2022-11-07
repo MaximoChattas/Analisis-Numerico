@@ -5,12 +5,9 @@
 #ifndef MÉTODOS_DERIVACION_H
 #define MÉTODOS_DERIVACION_H
 
-#define n 8
 #define h 0.1
 
 double f0(double x);
-
-void ingresoDatosDerivacionManual(double **datos);
 
 void ingresoDatosDerivacionAutomatico(double **datos);
 

@@ -7,70 +7,68 @@
 #include "Interpolacion.h"
 #include "../funcionesMatriz.h"
 
-#define Puntos 9
-
 double a0(double** datos)
 {
-    return datos[Puntos][1]/Puntos - a1(datos) * datos[Puntos][0]/Puntos;
+    return datos[cantPuntos][1]/cantPuntos - a1(datos) * datos[cantPuntos][0]/cantPuntos;
 }
 
 double a1(double** datos)
 {
-    return ((Puntos*datos[Puntos][3] - datos[Puntos][0]*datos[Puntos][1])/(Puntos*datos[Puntos][2] - pow(datos[Puntos][0] , 2)));
+    return ((cantPuntos*datos[cantPuntos][3] - datos[cantPuntos][0]*datos[cantPuntos][1])/(cantPuntos*datos[cantPuntos][2] - pow(datos[cantPuntos][0] , 2)));
 }
 
 void modeloLineal()
 {
-    double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatos(datos , Puntos);
+    double** datos = crearMatriz(cantPuntos+1 , 4);
+    ingresoDatos(datos);
 
     //Poner en 0 Fila final de sumatoria
     for(int i = 0 ; i < 4 ; i++)
     {
-        datos[Puntos][i] = 0;
+        datos[cantPuntos][i] = 0;
     }
 
-    for (int i = 0 ; i < Puntos ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
         datos[i][2] = pow(datos[i][0] , 2); //Columna X^2
         datos[i][3] = datos[i][0] * datos[i][1]; //Columna X*Y
 
         //Fila Sumatoria
-        datos[Puntos][0] += datos[i][0];
-        datos[Puntos][1] += datos[i][1];
-        datos[Puntos][2] += datos[i][2];
-        datos[Puntos][3] += datos[i][3];
+        datos[cantPuntos][0] += datos[i][0];
+        datos[cantPuntos][1] += datos[i][1];
+        datos[cantPuntos][2] += datos[i][2];
+        datos[cantPuntos][3] += datos[i][3];
     }
 
     std::cout << "\n\n";
     std::cout << "x\t\ty\t\tx^2\t\txy\n";
-    mostrarMatriz(datos , Puntos+1 , 4);
+    mostrarMatriz(datos , cantPuntos+1 , 4);
 
     std::cout << "\n\n" << "y = " << a1(datos) << "x + " << a0(datos);
 }
 
 void modeloExponencial()
 {
-    double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatos(datos , Puntos);
+    double** datos = crearMatriz(cantPuntos+1 , 4);
+    ingresoDatos(datos);
 
     //Poner en 0 Fila final de sumatoria
     for(int i = 0 ; i < 4 ; i++)
     {
-        datos[Puntos][i] = 0;
+        datos[cantPuntos][i] = 0;
     }
 
-    for (int i = 0 ; i < Puntos ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
         datos[i][1] = log(datos[i][1]);
         datos[i][2] = pow(datos[i][0] , 2);
         datos[i][3] = datos[i][0] * datos[i][1];
 
         //Fila Sumatoria
-        datos[Puntos][0] += datos[i][0];
-        datos[Puntos][1] += datos[i][1];
-        datos[Puntos][2] += datos[i][2];
-        datos[Puntos][3] += datos[i][3];
+        datos[cantPuntos][0] += datos[i][0];
+        datos[cantPuntos][1] += datos[i][1];
+        datos[cantPuntos][2] += datos[i][2];
+        datos[cantPuntos][3] += datos[i][3];
     }
 
     double A0 = a0(datos);
@@ -78,7 +76,7 @@ void modeloExponencial()
 
     std::cout << "\n\n";
     std::cout << "x\t\ty\t\tx^2\t\txy\n";
-    mostrarMatriz(datos , Puntos+1 , 4);
+    mostrarMatriz(datos , cantPuntos+1 , 4);
 
     std::cout << "\n\n";
     std::cout << "a0 = " << A0 << '\n';
@@ -89,16 +87,16 @@ void modeloExponencial()
 
 void modeloPotencial()
 {
-    double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatos(datos , Puntos);
+    double** datos = crearMatriz(cantPuntos+1 , 4);
+    ingresoDatos(datos);
 
     //Poner en 0 Fila sumatoria
     for(int i = 0 ; i < 4 ; i++)
     {
-        datos[Puntos][i] = 0;
+        datos[cantPuntos][i] = 0;
     }
 
-    for (int i = 0 ; i < Puntos ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
         datos[i][0] = log10(datos[i][0]);
         datos[i][1] = log10(datos[i][1]);
@@ -106,10 +104,10 @@ void modeloPotencial()
         datos[i][3] = datos[i][0] * datos[i][1];
 
         //Fila Sumatoria
-        datos[Puntos][0] += datos[i][0];
-        datos[Puntos][1] += datos[i][1];
-        datos[Puntos][2] += datos[i][2];
-        datos[Puntos][3] += datos[i][3];
+        datos[cantPuntos][0] += datos[i][0];
+        datos[cantPuntos][1] += datos[i][1];
+        datos[cantPuntos][2] += datos[i][2];
+        datos[cantPuntos][3] += datos[i][3];
     }
 
     double A0 = a0(datos);
@@ -118,7 +116,7 @@ void modeloPotencial()
 
     std::cout << "\n\n";
     std::cout << "x\t\ty\t\tx^2\t\txy\n";
-    mostrarMatriz(datos , Puntos+1 , 4);
+    mostrarMatriz(datos , cantPuntos+1 , 4);
 
     std::cout << "\n\n";
     std::cout << "a0 = " << A0 << '\n';
@@ -129,16 +127,16 @@ void modeloPotencial()
 
 void modeloCrecimiento()
 {
-    double** datos = crearMatriz(Puntos+1 , 4);
-    ingresoDatos(datos , Puntos);
+    double** datos = crearMatriz(cantPuntos+1 , 4);
+    ingresoDatos(datos);
 
     //Poner en 0 Fila sumatoria
     for(int i = 0 ; i < 4 ; i++)
     {
-        datos[Puntos][i] = 0;
+        datos[cantPuntos][i] = 0;
     }
 
-    for (int i = 0 ; i < Puntos ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
         datos[i][0] = 1/datos[i][0];
         datos[i][1] = 1/datos[i][1];
@@ -146,10 +144,10 @@ void modeloCrecimiento()
         datos[i][3] = datos[i][0] * datos[i][1];
 
         //Fila Sumatoria
-        datos[Puntos][0] += datos[i][0];
-        datos[Puntos][1] += datos[i][1];
-        datos[Puntos][2] += datos[i][2];
-        datos[Puntos][3] += datos[i][3];
+        datos[cantPuntos][0] += datos[i][0];
+        datos[cantPuntos][1] += datos[i][1];
+        datos[cantPuntos][2] += datos[i][2];
+        datos[cantPuntos][3] += datos[i][3];
     }
 
     double A0 = a0(datos);
@@ -157,7 +155,7 @@ void modeloCrecimiento()
 
     std::cout << "\n\n";
     std::cout << "x\t\ty\t\tx^2\t\txy\n";
-    mostrarMatriz(datos , Puntos+1 , 4);
+    mostrarMatriz(datos , cantPuntos+1 , 4);
 
     std::cout << "\n\n";
     std::cout << "a0 = " << A0 << '\n';
@@ -168,13 +166,13 @@ void modeloCrecimiento()
 
 void polinomioNewton()
 {
-    double **datos = crearMatriz(Puntos , 2);
-    double **diferencias = crearMatriz(Puntos-1 , Puntos-1);
-    ingresoDatos(datos , Puntos);
+    double **datos = crearMatriz(cantPuntos , 2);
+    double **diferencias = crearMatriz(cantPuntos-1 , cantPuntos-1);
+    ingresoDatos(datos);
 
-    for (int j = 0 ; j < Puntos-1 ; j++)
+    for (int j = 0 ; j < cantPuntos-1 ; j++)
     {
-        for (int i = 0 ; i < Puntos-1-j ; i++)
+        for (int i = 0 ; i < cantPuntos-1-j ; i++)
         {
             if(j>0) //Primera columna toma datos f(x)
             {
@@ -189,13 +187,13 @@ void polinomioNewton()
     }
 
     std::cout << "X\t\tY\n";
-    mostrarMatriz(datos , Puntos , 2);
+    mostrarMatriz(datos , cantPuntos , 2);
     std::cout << "\n\nDiferencias:\n";
-    mostrarMatriz(diferencias , Puntos-1 , Puntos-1);
+    mostrarMatriz(diferencias , cantPuntos-1 , cantPuntos-1);
 
     std::cout << "f(x) = " << datos[0][1];
 
-    for(int i = 0 ; i < Puntos-1 ; i++)
+    for(int i = 0 ; i < cantPuntos-1 ; i++)
     {
         std::cout << " + ";
         std::cout << diferencias[0][i];
@@ -208,16 +206,16 @@ void polinomioNewton()
 
 void polinomioLagrange()
 {
-    double **datos = crearMatriz(Puntos , 2);
-    ingresoDatos(datos , Puntos);
+    double **datos = crearMatriz(cantPuntos , 2);
+    ingresoDatos(datos);
 
-    mostrarMatriz(datos , Puntos , 2);
+    mostrarMatriz(datos , cantPuntos , 2);
     std::cout << "\n\n";
 
-    for(int i = 0 ; i < Puntos ; i++)
+    for(int i = 0 ; i < cantPuntos ; i++)
     {
         double denominador = 1;
-        for (int j = 0 ; j < Puntos ; j++)
+        for (int j = 0 ; j < cantPuntos ; j++)
         {
             if (j != i)
             {
@@ -227,7 +225,7 @@ void polinomioLagrange()
         }
         std::cout << '(' << datos[i][1]/denominador << ')';
 
-        if (i != Puntos-1)
+        if (i != cantPuntos-1)
         {
             std::cout << " + ";
         }
@@ -236,28 +234,28 @@ void polinomioLagrange()
 
 void trazadoraCubicaNatural()
 {
-    double **datos = crearMatriz(Puntos , 2);
-    double* h = crearArray(Puntos-1);
-    double* a = crearArray(Puntos-1);
-    double* l = crearArray(Puntos);
-    double* m = crearArray(Puntos-1);
-    double* z = crearArray(Puntos);
-    double* c = crearArray(Puntos);
-    double* b = crearArray(Puntos);
-    double* d = crearArray(Puntos);
+    double **datos = crearMatriz(cantPuntos , 2);
+    double* h = crearArray(cantPuntos-1);
+    double* a = crearArray(cantPuntos-1);
+    double* l = crearArray(cantPuntos);
+    double* m = crearArray(cantPuntos-1);
+    double* z = crearArray(cantPuntos);
+    double* c = crearArray(cantPuntos);
+    double* b = crearArray(cantPuntos);
+    double* d = crearArray(cantPuntos);
 
 
-    ingresoDatos(datos , Puntos);
+    ingresoDatos(datos);
 
     std::cout << "\nPaso 1:\n";
-    for (int i = 0 ; i < Puntos-1 ; i++)
+    for (int i = 0 ; i < cantPuntos-1 ; i++)
     {
         h[i] = datos[i + 1][0] - datos[i][0];
         std::cout << "h[" << i << "] = " << h[i] << '\n';
     }
 
     std::cout << "\nPaso 2:\n";
-    for (int i = 1 ; i < Puntos-1 ; i++)
+    for (int i = 1 ; i < cantPuntos-1 ; i++)
     {
         a[i] = 3/h[i]*(datos[i+1][1] - datos[i][1]) - 3/h[i-1]*(datos[i][1] - datos[i-1][1]);
         std::cout << "a[" << i << "] = " << a[i] << '\n';
@@ -274,7 +272,7 @@ void trazadoraCubicaNatural()
     std::cout << "z[" << 0 << "] = " << z[0] << '\n';
 
     std::cout << "\nPaso 4:\n";
-    for(int i = 1 ; i < Puntos-1 ; i++)
+    for(int i = 1 ; i < cantPuntos-1 ; i++)
     {
         l[i] = 2*(datos[i+1][0] - datos[i-1][0]) - h[i-1]*m[i-1];
         std::cout << "l[" << i << "] = " << l[i] << '\n';
@@ -287,17 +285,17 @@ void trazadoraCubicaNatural()
     }
 
     std::cout << "\nPaso 5:\n";
-    l[Puntos-1] = 1;
-    std::cout << "l[" << Puntos-1 << "] = " << l[Puntos-1] << '\n';
+    l[cantPuntos-1] = 1;
+    std::cout << "l[" << cantPuntos-1 << "] = " << l[cantPuntos-1] << '\n';
 
-    z[Puntos-1] = 0;
-    std::cout << "z[" << Puntos-1 << "] = " << z[Puntos-1] << '\n';
+    z[cantPuntos-1] = 0;
+    std::cout << "z[" << cantPuntos-1 << "] = " << z[cantPuntos-1] << '\n';
 
-    c[Puntos-1] = 0;
-    std::cout << "c[" << Puntos-1 << "] = " << c[Puntos-1] << '\n';
+    c[cantPuntos-1] = 0;
+    std::cout << "c[" << cantPuntos-1 << "] = " << c[cantPuntos-1] << '\n';
 
     std::cout << "\nPaso 6:\n";
-    for(int i = Puntos-2 ; i >= 0 ; i--)
+    for(int i = cantPuntos-2 ; i >= 0 ; i--)
     {
         c[i] = z[i] - m[i]*c[i+1];
         std::cout << "c[" << i << "] = " << c[i] << '\n';
@@ -312,7 +310,7 @@ void trazadoraCubicaNatural()
     std::cout << "\n\n";
 
     //Paso 7:
-    for (int i = 0 ; i < Puntos-1 ; i++)
+    for (int i = 0 ; i < cantPuntos-1 ; i++)
     {
         std::cout << "S" << i << "(x) = " << datos[i][1] << " + " << b[i] << "(x - " << datos[i][0] << ") + " <<
         c[i] << "(x - " << datos[i][0] << ")^2 + " << d[i] << "(x - " << datos[i][0] << ")^3\n";
@@ -321,18 +319,18 @@ void trazadoraCubicaNatural()
 
 void trazadoraCubicaCondicionada()
 {
-    double **datos = crearMatriz(Puntos , 2);
-    double* h = crearArray(Puntos-1);
-    double* a = crearArray(Puntos);
-    double* l = crearArray(Puntos);
-    double* m = crearArray(Puntos-1);
-    double* z = crearArray(Puntos);
-    double* c = crearArray(Puntos);
-    double* b = crearArray(Puntos);
-    double* d = crearArray(Puntos);
+    double **datos = crearMatriz(cantPuntos , 2);
+    double* h = crearArray(cantPuntos-1);
+    double* a = crearArray(cantPuntos);
+    double* l = crearArray(cantPuntos);
+    double* m = crearArray(cantPuntos-1);
+    double* z = crearArray(cantPuntos);
+    double* c = crearArray(cantPuntos);
+    double* b = crearArray(cantPuntos);
+    double* d = crearArray(cantPuntos);
     double fp0 , fpn;
 
-    ingresoDatos(datos , Puntos);
+    ingresoDatos(datos);
 
     std::cout << "Ingrese el valor de la primera derivada en X0\n";
     std::cin >> fp0;
@@ -341,7 +339,7 @@ void trazadoraCubicaCondicionada()
     std::cin >> fpn;
 
     std::cout << "\nPaso 1:\n";
-    for (int i = 0 ; i < Puntos-1 ; i++)
+    for (int i = 0 ; i < cantPuntos-1 ; i++)
     {
         h[i] = datos[i + 1][0] - datos[i][0];
         std::cout << "h[" << i << "] = " << h[i] << '\n';
@@ -351,11 +349,11 @@ void trazadoraCubicaCondicionada()
     a[0] = 3/h[0]*(datos[1][1] - datos[0][1]) - 3*fp0;
     std::cout << "a[" << 0 << "] = " << a[0] << '\n';
 
-    a[Puntos-1] = 3*fpn - 3*(datos[Puntos-1][1] - datos[Puntos-2][1])/h[Puntos-2];
-    std::cout << "a[" << Puntos-1 << "] = " << a[Puntos-1] << '\n';
+    a[cantPuntos-1] = 3*fpn - 3*(datos[cantPuntos-1][1] - datos[cantPuntos-2][1])/h[cantPuntos-2];
+    std::cout << "a[" << cantPuntos-1 << "] = " << a[cantPuntos-1] << '\n';
 
     std::cout << "\nPaso 3:\n";
-    for (int i = 1 ; i < Puntos-1 ; i++)
+    for (int i = 1 ; i < cantPuntos-1 ; i++)
     {
         a[i] = 3/h[i]*(datos[i+1][1] - datos[i][1]) - 3/h[i-1]*(datos[i][1] - datos[i-1][1]);
         std::cout << "a[" << i << "] = " << a[i] << '\n';
@@ -372,7 +370,7 @@ void trazadoraCubicaCondicionada()
     std::cout << "z[" << 0 << "] = " << z[0] << '\n';
 
     std::cout << "\nPaso 5:\n";
-    for(int i = 1 ; i < Puntos-1 ; i++)
+    for(int i = 1 ; i < cantPuntos-1 ; i++)
     {
         l[i] = 2*(datos[i+1][0] - datos[i-1][0]) - h[i-1]*m[i-1];
         std::cout << "l[" << i << "] = " << l[i] << '\n';
@@ -385,17 +383,17 @@ void trazadoraCubicaCondicionada()
     }
 
     std::cout << "\nPaso 6:\n";
-    l[Puntos-1] = h[Puntos-2]*(2 - m[Puntos-2]);
-    std::cout << "l[" << Puntos-1 << "] = " << l[Puntos-1] << '\n';
+    l[cantPuntos-1] = h[cantPuntos-2]*(2 - m[cantPuntos-2]);
+    std::cout << "l[" << cantPuntos-1 << "] = " << l[cantPuntos-1] << '\n';
 
-    z[Puntos-1] = (a[Puntos-1] - h[Puntos-2]*z[Puntos-2])/l[Puntos-1];
-    std::cout << "z[" << Puntos-1 << "] = " << a[Puntos-1] << '\n';
+    z[cantPuntos-1] = (a[cantPuntos-1] - h[cantPuntos-2]*z[cantPuntos-2])/l[cantPuntos-1];
+    std::cout << "z[" << cantPuntos-1 << "] = " << a[cantPuntos-1] << '\n';
 
-    c[Puntos-1] = z[Puntos-1];
-    std::cout << "c[" << Puntos-1 << "] = " << c[Puntos-1] << '\n';
+    c[cantPuntos-1] = z[cantPuntos-1];
+    std::cout << "c[" << cantPuntos-1 << "] = " << c[cantPuntos-1] << '\n';
 
     std::cout << "\nPaso 7:\n";
-    for(int i = Puntos-2 ; i >= 0 ; i--)
+    for(int i = cantPuntos-2 ; i >= 0 ; i--)
     {
         c[i] = z[i] - m[i]*c[i+1];
         std::cout << "c[" << i << "] = " << c[i] << '\n';
@@ -410,7 +408,7 @@ void trazadoraCubicaCondicionada()
     std::cout << "\n\n";
 
     //Paso 8:
-    for (int i = 0 ; i < Puntos-1 ; i++)
+    for (int i = 0 ; i < cantPuntos-1 ; i++)
     {
         std::cout << "S" << i << "(x) = " << datos[i][1] << " + " << b[i] << "(x - " << datos[i][0] << ") + " <<
                   c[i] << "(x - " << datos[i][0] << ")^2 + " << d[i] << "(x - " << datos[i][0] << ")^3\n";

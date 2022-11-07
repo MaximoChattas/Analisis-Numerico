@@ -6,8 +6,6 @@
 #include <cmath>
 #include "Raiz.h"
 
-#define Tolerancia pow(10 , -3)
-
 double f(double x)
 {
     //INSERTAR FUNCIÓN AQUÍ

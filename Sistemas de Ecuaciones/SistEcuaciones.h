@@ -5,6 +5,9 @@
 #ifndef METODOS_SISTECUACIONES_H
 #define METODOS_SISTECUACIONES_H
 
+#define DIMENSION 3
+#define TOLERANCIA pow(10 , -4)
+
 void ingresoDatosSistEcuaciones(double **A, double *B);
 
 void mostrarEcuaciones(double **A, double *B);

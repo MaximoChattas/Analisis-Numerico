@@ -42,9 +42,9 @@ void mostrarMatriz(double **matriz, int filas, int columnas)
     }
 }
 
-void ingresoDatos(double **datos , int cant)
+void ingresoDatos(double **datos)
 {
-    for (int i = 0 ; i < cant ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
         for (int j = 0 ; j < 2 ; j++)
         {

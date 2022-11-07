@@ -13,26 +13,6 @@ double f0(double x)
     return exp(x) * cos(x);
 }
 
-void ingresoDatosDerivacionManual(double **datos)
-{
-    for (int i = 0 ; i < n ; i++)
-    {
-        for (int j = 0 ; j < 2 ; j++)
-        {
-            if (j==0)
-            {
-                std::cout << "X " << i << ": ";
-            }
-            else
-            {
-                std::cout << "Y " << i << ": ";
-            }
-
-            std::cin >> datos[i][j];
-        }
-    }
-}
-
 void ingresoDatosDerivacionAutomatico(double **datos)
 {
     float xi , xf;
@@ -50,7 +30,7 @@ void ingresoDatosDerivacionAutomatico(double **datos)
         xi += h;
         i++;
 
-    }while(i < n);
+    }while(i < cantPuntos);
 }
 
 double Progresiva2Puntos(double** datos , int indice)
@@ -68,12 +48,12 @@ double Centrada2Puntos(double **datos, int indice) {
 
 void derivacion2Puntos()
 {
-    double **datos = crearMatriz(n+1 , 2);
-    ingresoDatosDerivacionManual(datos);
+    double **datos = crearMatriz(cantPuntos+1 , 2);
+    ingresoDatos(datos);
     std::cout << "X\tf(x)\tf'(x)\n";
-    for (int i = 0 ; i < n ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
-        if (i > 0 && i < n-1)
+        if (i > 0 && i < cantPuntos-1)
         {
             std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Centrada2Puntos(datos , i);
         }
@@ -83,7 +63,7 @@ void derivacion2Puntos()
             std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Progresiva2Puntos(datos , i);
         }
 
-        else if (i == n-1)
+        else if (i == cantPuntos-1)
         {
             std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Regresiva2Puntos(datos , i);
         }
@@ -109,12 +89,12 @@ double Centrada3Puntos(double **datos, int indice)
 
 void derivacion3Puntos()
 {
-    double **datos = crearMatriz(n , 2);
+    double **datos = crearMatriz(cantPuntos , 2);
     ingresoDatosDerivacionAutomatico(datos);
     std::cout << "X\tf(x)\tf'(x)\n";
-    for (int i = 0 ; i < n ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
-        if (i > 0 && i < n-1)
+        if (i > 0 && i < cantPuntos-1)
         {
             std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Centrada3Puntos(datos , i) << "\t Centrada";
         }
@@ -151,12 +131,12 @@ double Centrada5Puntos(double **datos, int indice) {
 
 void derivacion5Puntos()
 {
-    double **datos = crearMatriz(n , 2);
+    double **datos = crearMatriz(cantPuntos , 2);
     ingresoDatosDerivacionAutomatico(datos);
     std::cout << "X\t\tf(x)\tf'(x)\n";
-    for (int i = 0 ; i < n ; i++)
+    for (int i = 0 ; i < cantPuntos ; i++)
     {
-        if (i > 1 && i < n-2)
+        if (i > 1 && i < cantPuntos-2)
         {
             std::cout << datos[i][0] << '\t' << datos[i][1] << '\t' << Centrada5Puntos(datos , i) << "\t Centrada";
         }

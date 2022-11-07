@@ -5,8 +5,6 @@
 #ifndef MÉTODOS_INTEGRACION_H
 #define MÉTODOS_INTEGRACION_H
 
-#define n 11
-
 double trapecios();
 
 #endif //MÉTODOS_INTEGRACION_H

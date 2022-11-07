@@ -7,9 +7,6 @@
 #include "SistEcuaciones.h"
 #include "../funcionesMatriz.h"
 
-#define DIMENSION 3
-#define TOLERANCIA pow(10 , -4)
-
 void ingresoDatosSistEcuaciones(double** A , double* B)
 {
     for (int i = 0 ; i < DIMENSION ; i++)
