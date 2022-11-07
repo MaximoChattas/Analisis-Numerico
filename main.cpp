@@ -9,6 +9,7 @@
 #include "Interpolación de Polinomios/Interpolacion.h"
 #include "Derivación Numérica/Derivacion.h"
 #include "Integración Numérica/Integracion.h"
+#include "Ecuaciones Diferenciales/EcuacionesDiferenciales.h"
 
 /*Encontrar raices de funciones:
  * Modificar f , g , df
@@ -18,6 +19,6 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    simpson();
+    euler();
     return 0;
 }

@@ -86,6 +86,7 @@ void ingresoDatosAutomatico(double **datos)
     }while(i < cantPuntos);
 }
 
+//Funcion para Derivacion, Integracion
 double f0(double x)
 {
     //Funcion f

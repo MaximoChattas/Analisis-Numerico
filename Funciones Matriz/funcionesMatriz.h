@@ -5,7 +5,7 @@
 #ifndef MÉTODOS_FUNCIONESMATRIZ_H
 #define MÉTODOS_FUNCIONESMATRIZ_H
 
-#define cantPuntos 11
+#define cantPuntos 41
 
 double *crearArray(int filas);
 
