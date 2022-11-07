@@ -29,3 +29,12 @@
 7	616	1667845283777620699	CMakeFiles/Metodos.dir/Interpolación_de_Polinomios/Interpolacion.cpp.o	96ecd1555f5273a2
 599	777	1667845283938931453	CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o	19ebc75bc0dc98d9
 777	831	1667845283995508346	Metodos	35c673170aa4e3cc
+5	492	1667845813637148845	CMakeFiles/Metodos.dir/main.cpp.o	9739547d2a752d72
+5	496	1667845813641785281	CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o	cd07db070df099a4
+496	550	1667845813697618551	Metodos	35c673170aa4e3cc
+5	544	1667845965030526090	CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o	cd07db070df099a4
+544	620	1667845965109349845	Metodos	35c673170aa4e3cc
+5	464	1667846061578191189	CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o	cd07db070df099a4
+464	516	1667846061632303397	Metodos	35c673170aa4e3cc
+18	489	1667846130192715687	CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o	cd07db070df099a4
+489	540	1667846130245272305	Metodos	35c673170aa4e3cc

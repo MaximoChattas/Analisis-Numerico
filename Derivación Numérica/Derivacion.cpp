@@ -15,12 +15,15 @@ double f0(double x)
 
 void ingresoDatosDerivacionAutomatico(double **datos)
 {
-    float xi , xf;
+    float xi , xf , h;
     std::cout << "X inicial: ";
     std::cin >> xi;
 
     std::cout << "X final: ";
     std::cin >> xf;
+
+    std::cout << "h: ";
+    std::cin >> h;
 
     int i = 0;
     do {
@@ -35,15 +38,15 @@ void ingresoDatosDerivacionAutomatico(double **datos)
 
 double Progresiva2Puntos(double** datos , int indice)
 {
-    return ((datos[indice+1][1] - datos[indice][1])/h);
+    return ((datos[indice+1][1] - datos[indice][1])/(datos[indice+1][0] - datos[indice][0]));
 }
 
 double Regresiva2Puntos(double **datos, int indice) {
-    return ((datos[indice][1] - datos[indice-1][1])/h);
+    return ((datos[indice][1] - datos[indice-1][1])/(datos[indice][0] - datos[indice-1][0]));
 }
 
 double Centrada2Puntos(double **datos, int indice) {
-    return ((datos[indice+1][1] - datos[indice-1][1])/(2*h));
+    return ((datos[indice+1][1] - datos[indice-1][1])/(datos[indice+1][0] - datos[indice-1][0]));
 }
 
 void derivacion2Puntos()

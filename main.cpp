@@ -18,7 +18,7 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    trapecios();
+    derivacion5Puntos();
 
     return 0;
 }
