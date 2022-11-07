@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <cmath>
 #include "funcionesMatriz.h"
 
 double *crearArray(int filas)
@@ -60,4 +61,33 @@ void ingresoDatos(double **datos)
             std::cin >> datos[i][j];
         }
     }
+}
+
+void ingresoDatosAutomatico(double **datos)
+{
+    float xi , xf , h;
+    std::cout << "X inicial: ";
+    std::cin >> xi;
+
+    std::cout << "X final: ";
+    std::cin >> xf;
+
+    std::cout << "h: ";
+    std::cin >> h;
+
+    int i = 0;
+    do {
+        datos[i][0] = xi;
+        datos[i][1] = f0(xi);
+
+        xi += h;
+        i++;
+
+    }while(i < cantPuntos);
+}
+
+double f0(double x)
+{
+    //Funcion f
+    return 1 - x - 4*pow(x , 3) + 3*pow(x , 5);
 }

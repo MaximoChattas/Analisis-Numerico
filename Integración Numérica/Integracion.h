@@ -6,5 +6,6 @@
 #define MÉTODOS_INTEGRACION_H
 
 double trapecios();
+double simpson();
 
 #endif //MÉTODOS_INTEGRACION_H

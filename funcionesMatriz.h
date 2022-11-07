@@ -17,4 +17,8 @@ void mostrarMatriz(double** matriz , int filas , int columnas);
 
 void ingresoDatos(double **datos);
 
+void ingresoDatosAutomatico(double **datos);
+
+double f0(double x);
+
 #endif //MÉTODOS_FUNCIONESMATRIZ_H

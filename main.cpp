@@ -18,7 +18,6 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    derivacion5Puntos();
-
+    simpson();
     return 0;
 }

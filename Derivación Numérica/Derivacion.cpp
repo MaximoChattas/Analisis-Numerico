@@ -7,35 +7,6 @@
 #include "../funcionesMatriz.h"
 #include <cmath>
 
-double f0(double x)
-{
-    //Funcion f
-    return exp(x) * cos(x);
-}
-
-void ingresoDatosDerivacionAutomatico(double **datos)
-{
-    float xi , xf , h;
-    std::cout << "X inicial: ";
-    std::cin >> xi;
-
-    std::cout << "X final: ";
-    std::cin >> xf;
-
-    std::cout << "h: ";
-    std::cin >> h;
-
-    int i = 0;
-    do {
-        datos[i][0] = xi;
-        datos[i][1] = f0(xi);
-
-        xi += h;
-        i++;
-
-    }while(i < cantPuntos);
-}
-
 double Progresiva2Puntos(double** datos , int indice)
 {
     return ((datos[indice+1][1] - datos[indice][1])/(datos[indice+1][0] - datos[indice][0]));
@@ -93,7 +64,7 @@ double Centrada3Puntos(double **datos, int indice)
 void derivacion3Puntos()
 {
     double **datos = crearMatriz(cantPuntos , 2);
-    ingresoDatosDerivacionAutomatico(datos);
+    ingresoDatosAutomatico(datos);
     std::cout << "X\tf(x)\tf'(x)\n";
     for (int i = 0 ; i < cantPuntos ; i++)
     {
@@ -135,7 +106,7 @@ double Centrada5Puntos(double **datos, int indice) {
 void derivacion5Puntos()
 {
     double **datos = crearMatriz(cantPuntos , 2);
-    ingresoDatosDerivacionAutomatico(datos);
+    ingresoDatosAutomatico(datos);
     std::cout << "X\t\tf(x)\tf'(x)\n";
     for (int i = 0 ; i < cantPuntos ; i++)
     {

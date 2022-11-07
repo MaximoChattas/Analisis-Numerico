@@ -5,10 +5,6 @@
 #ifndef MÉTODOS_DERIVACION_H
 #define MÉTODOS_DERIVACION_H
 
-double f0(double x);
-
-void ingresoDatosDerivacionAutomatico(double **datos);
-
 double Progresiva2Puntos(double **datos, int indice);
 
 double Regresiva2Puntos(double **datos, int indice);

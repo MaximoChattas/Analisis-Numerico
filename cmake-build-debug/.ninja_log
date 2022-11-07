@@ -38,3 +38,17 @@
 464	516	1667846061632303397	Metodos	35c673170aa4e3cc
 18	489	1667846130192715687	CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o	cd07db070df099a4
 489	540	1667846130245272305	Metodos	35c673170aa4e3cc
+4	587	1667848479953825837	CMakeFiles/Metodos.dir/main.cpp.o	9739547d2a752d72
+6	591	1667848479956452368	CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o	19ebc75bc0dc98d9
+6	592	1667848479960041573	CMakeFiles/Metodos.dir/funcionesMatriz.cpp.o	83a3da961cf614d5
+6	593	1667848479960641260	CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o	cd07db070df099a4
+6	594	1667848479962381740	CMakeFiles/Metodos.dir/Sistemas_de_Ecuaciones/SistEcuaciones.cpp.o	25cd1b98c2ffd04c
+6	607	1667848479976546275	CMakeFiles/Metodos.dir/Interpolación_de_Polinomios/Interpolacion.cpp.o	96ecd1555f5273a2
+607	661	1667848480032774265	Metodos	35c673170aa4e3cc
+5	424	1667848521920596261	CMakeFiles/Metodos.dir/main.cpp.o	9739547d2a752d72
+424	476	1667848521974375047	Metodos	35c673170aa4e3cc
+16	473	1667848618636572141	CMakeFiles/Metodos.dir/funcionesMatriz.cpp.o	83a3da961cf614d5
+17	474	1667848618636569683	CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o	19ebc75bc0dc98d9
+474	525	1667848618690588044	Metodos	35c673170aa4e3cc
+11	460	1667848747177693968	CMakeFiles/Metodos.dir/funcionesMatriz.cpp.o	83a3da961cf614d5
+461	513	1667848747231964361	Metodos	35c673170aa4e3cc
