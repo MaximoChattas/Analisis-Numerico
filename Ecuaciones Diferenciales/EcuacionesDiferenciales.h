@@ -13,4 +13,8 @@ void heun();
 
 void rungeKutta2();
 
+void rungeKutta3();
+
+void rungeKutta4();
+
 #endif //MÉTODOS_ECUACIONESDIFERENCIALES_H

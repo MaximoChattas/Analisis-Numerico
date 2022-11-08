@@ -19,6 +19,6 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    rungeKutta2();
+    rungeKutta4();
     return 0;
 }
