@@ -19,6 +19,6 @@ int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    euler();
+    rungeKutta2();
     return 0;
 }

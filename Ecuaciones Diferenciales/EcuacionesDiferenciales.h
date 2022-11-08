@@ -5,9 +5,12 @@
 #ifndef MÉTODOS_ECUACIONESDIFERENCIALES_H
 #define MÉTODOS_ECUACIONESDIFERENCIALES_H
 
-#define h 0.1;
+double f(double x, double y);
 
-double f(double x , double y);
 void euler();
+
+void heun();
+
+void rungeKutta2();
 
 #endif //MÉTODOS_ECUACIONESDIFERENCIALES_H
