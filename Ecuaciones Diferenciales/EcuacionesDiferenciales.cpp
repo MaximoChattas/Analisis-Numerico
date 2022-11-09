@@ -9,7 +9,7 @@
 
 double f(double x , double y)
 {
-    return exp(0.8 * x) - 0.5*y;
+    return y* pow(x , 2) - y;
 }
 
 void euler()
@@ -51,29 +51,33 @@ void heun()
     std::cout << "h = ";
     std::cin >> h;
 
-    double **datos = crearMatriz(cantPuntos , 2);
+    double **datos = crearMatriz(cantPuntos , 3);
 
     //Condiciones iniciales
     datos[0][0] = x0;
     datos[0][1] = y0;
+    datos[0][2] = y0;
 
-    for (int i = 1 ; i < cantPuntos ; i++)
+    for (int i = 0 ; i < cantPuntos-1 ; i++)
     {
         double ypredictora , pendienteInicial , pendienteFinal , pendiente;
-        datos[i][0] = datos[i-1][0]+h;
+        datos[i+1][0] = datos[i][0]+h;
 
-        ypredictora = datos[i-1][1] + f(datos[i-1][0] , datos[i-1][1])*h;
-        pendienteFinal = f(datos[i][0] , ypredictora);
-        pendienteInicial = f(datos[i-1][0] , datos[i-1][1]);
+        ypredictora = datos[i][2] + f(datos[i][0] , datos[i][2])*h;
+        pendienteInicial = f(datos[i][0] , datos[i][2]);
+        pendienteFinal = f(datos[i+1][0] , ypredictora);
 
         pendiente = (pendienteFinal + pendienteInicial)/2;
 
-        datos[i][1] = datos[i-1][1] + pendiente*h;
+        datos[i][1] = ypredictora;
+        datos[i+1][2] = datos[i][2] + pendiente*h;
     }
 
+    datos[cantPuntos-1][1] = datos[cantPuntos-1][2] + f(datos[cantPuntos-1][0] , datos[cantPuntos-1][2])*h;
+
     std::cout << "\n\n";
-    std::cout << "x\t\ty\n";
-    mostrarMatriz(datos , cantPuntos , 2);
+    std::cout << "x\t\ty pred\ty\n";
+    mostrarMatriz(datos , cantPuntos , 3);
 }
 
 void rungeKutta2()
@@ -87,27 +91,33 @@ void rungeKutta2()
     std::cout << "h = ";
     std::cin >> h;
 
-    double **datos = crearMatriz(cantPuntos , 2);
+    double **datos = crearMatriz(cantPuntos , 4);
 
     //Condiciones iniciales
     datos[0][0] = x0;
     datos[0][1] = y0;
 
-    for (int i = 1 ; i < cantPuntos ; i++)
+    for (int i = 0 ; i < cantPuntos-1 ; i++)
     {
         double K1 , K2 , pendiente;
-        datos[i][0] = datos[i-1][0]+h;
+        datos[i+1][0] = datos[i][0]+h;
 
-        K1 = f(datos[i-1][0] , datos[i-1][1]);
-        K2 = f(datos[i][0] , datos[i-1][1] + h*K1);
+        K1 = f(datos[i][0] , datos[i][1]);
+        K2 = f(datos[i+1][0] , datos[i][1] + h*K1);
 
         pendiente = K1/2 + K2/2;
-        datos[i][1] = datos[i-1][1] + pendiente*h;
+        datos[i+1][1] = datos[i][1] + pendiente*h;
+        datos[i][2] = K1;
+        datos[i][3] = K2;
     }
 
+    //K1 y K2 finales
+    datos[cantPuntos-1][2] = f(datos[cantPuntos-1][0] , datos[cantPuntos-1][1]);
+    datos[cantPuntos-1][3] = f(datos[cantPuntos-1][0] + h , datos[cantPuntos-1][1] + h*datos[cantPuntos-1][2]);
+
     std::cout << "\n\n";
-    std::cout << "x\t\ty\n";
-    mostrarMatriz(datos , cantPuntos , 2);
+    std::cout << "x\t\ty\t\tK1\t\tK2\n";
+    mostrarMatriz(datos , cantPuntos , 4);
 }
 
 void rungeKutta3()
@@ -156,27 +166,36 @@ void rungeKutta4()
     std::cout << "h = ";
     std::cin >> h;
 
-    double **datos = crearMatriz(cantPuntos , 2);
+    double **datos = crearMatriz(cantPuntos , 6);
 
     //Condiciones iniciales
     datos[0][0] = x0;
     datos[0][1] = y0;
 
-    for (int i = 1 ; i < cantPuntos ; i++)
+    for (int i = 0 ; i < cantPuntos-1 ; i++)
     {
         double K1 , K2 , K3 , K4 , pendiente;
-        datos[i][0] = datos[i-1][0]+h;
+        datos[i+1][0] = datos[i][0]+h;
 
-        K1 = f(datos[i-1][0] , datos[i-1][1]);
-        K2 = f(datos[i-1][0] + h/2 , datos[i-1][1] + h*K1/2);
-        K3 = f(datos[i-1][0] + h/2 , datos[i-1][1] + h*K2/2);
-        K4 = f(datos[i][0] , datos[i-1][1] + h*K3);
+        K1 = f(datos[i][0] , datos[i][1]);
+        K2 = f(datos[i][0] + h/2 , datos[i][1] + h*K1/2);
+        K3 = f(datos[i][0] + h/2 , datos[i][1] + h*K2/2);
+        K4 = f(datos[i+1][0] , datos[i][1] + h*K3);
 
         pendiente = (K1 + 2*K2 + 2*K3 + K4)/6;
-        datos[i][1] = datos[i-1][1] + pendiente*h;
+        datos[i+1][1] = datos[i][1] + pendiente*h;
+        datos[i][2] = K1;
+        datos[i][3] = K2;
+        datos[i][4] = K3;
+        datos[i][5] = K4;
     }
 
+    datos[cantPuntos-1][2] = f(datos[cantPuntos-1][0] , datos[cantPuntos-1][1]);
+    datos[cantPuntos-1][3] = f(datos[cantPuntos-1][0] + h/2 , datos[cantPuntos-1][1] + h*datos[cantPuntos-1][2]/2);
+    datos[cantPuntos-1][4] = f(datos[cantPuntos-1][0] + h/2 , datos[cantPuntos-1][1] + h*datos[cantPuntos-1][3]/2);
+    datos[cantPuntos-1][5] = f(datos[cantPuntos-1][0] + h , datos[cantPuntos-1][1] + h*datos[cantPuntos-1][4]);
+
     std::cout << "\n\n";
-    std::cout << "x\t\ty\n";
-    mostrarMatriz(datos , cantPuntos , 2);
+    std::cout << "x\t\ty\t\tK1\t\tK2\t\tK3\t\tK4\n";
+    mostrarMatriz(datos , cantPuntos , 6);
 }

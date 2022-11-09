@@ -10,7 +10,7 @@ double trapecios()
 {
     double integral = 0;
     double** datos = crearMatriz(cantPuntos , 2);
-    ingresoDatos(datos);
+    ingresoDatosAutomatico(datos);
     mostrarMatriz(datos , cantPuntos , 2);
 
     for (int i = 1 ; i < cantPuntos-1 ; i++)
