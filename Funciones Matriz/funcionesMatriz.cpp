@@ -75,6 +75,8 @@ void ingresoDatosAutomatico(double **datos)
     std::cout << "h: ";
     std::cin >> h;
 
+    std::cout << "\n\n";
+
     int i = 0;
     do {
         datos[i][0] = xi;
@@ -90,5 +92,5 @@ void ingresoDatosAutomatico(double **datos)
 double f0(double x)
 {
     //Funcion f
-    return (4*x + 1)/(pow(x , 2));
+    return (x)/(cbrt(pow(x , 2) + 4));
 }

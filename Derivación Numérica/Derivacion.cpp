@@ -65,7 +65,9 @@ void derivacion3Puntos()
 {
     double **datos = crearMatriz(cantPuntos , 2);
     ingresoDatosAutomatico(datos);
-    std::cout << "X\tf(x)\tf'(x)\n";
+
+    std::cout << "Derivacion 3 Puntos\n\n";
+    std::cout << "X\t\tf(x)\tf'(x)\n";
     for (int i = 0 ; i < cantPuntos ; i++)
     {
         if (i > 0 && i < cantPuntos-1)

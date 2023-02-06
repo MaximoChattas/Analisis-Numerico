@@ -12,6 +12,17 @@ CMake Warning (dev) in CMakeLists.txt:
   line.
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake:303 (message):
+  Ignoring CMAKE_OSX_SYSROOT value:
+
+   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+
+  because the directory does not exist.
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake:21 (include)
+  CMakeLists.txt
+
+
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/maxichattas/Documents/UCC/2º Año/Análisis Numérico/Métodos/cmake-build-debug

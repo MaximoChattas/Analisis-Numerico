@@ -32,6 +32,10 @@ double simpson()
     double integral = 0;
     double** datos = crearMatriz(cantPuntos , 2);
     ingresoDatosAutomatico(datos);
+
+    std::cout << "Metodo de Simpson\n\n";
+
+    std::cout << "x\t\tf(x)\n";
     mostrarMatriz(datos , cantPuntos , 2);
 
     for (int i = 1 ; i < cantPuntos-1 ; i++)
@@ -44,6 +48,6 @@ double simpson()
 
     integral*=((datos[cantPuntos-1][0] - datos[0][0]))/(3*(cantPuntos-1));
 
-    std::cout << "IT = " << integral << '\n';
+    std::cout << "\nIT = " << integral << '\n';
     return integral;
 }

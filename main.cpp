@@ -11,14 +11,10 @@
 #include "Integración Numérica/Integracion.h"
 #include "Ecuaciones Diferenciales/EcuacionesDiferenciales.h"
 
-/*Encontrar raices de funciones:
- * Modificar f , g , df
- */
 
 int main()
 {
     std::cout << std::fixed << std::setprecision(4);
 
-    rungeKutta4();
     return 0;
 }

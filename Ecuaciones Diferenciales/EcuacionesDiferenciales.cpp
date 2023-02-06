@@ -9,7 +9,7 @@
 
 double f(double x , double y)
 {
-    return y* pow(x , 2) - y;
+    return cos(x + y);
 }
 
 void euler()
@@ -82,14 +82,18 @@ void heun()
 
 void rungeKutta2()
 {
+    std::cout << "Metodo Runge-Kutta 2do Orden\n\n";
     double x0 , y0 , h;
 
-    std::cout << "x0 = ";
-    std::cin >> x0;
-    std::cout << "y(" << x0 << ") = ";
-    std::cin >> y0;
-    std::cout << "h = ";
-    std::cin >> h;
+    x0 = 0;
+    y0 = M_PI;
+    h = 0.1;
+    std::cout << "x0 = " << x0 << '\n';
+//    std::cin >> x0;
+    std::cout << "y(" << x0 << ") = " << y0 << '\n';
+//    std::cin >> y0;
+    std::cout << "h = " << h << '\n';
+//    std::cin >> h;
 
     double **datos = crearMatriz(cantPuntos , 4);
 
@@ -116,7 +120,7 @@ void rungeKutta2()
     datos[cantPuntos-1][3] = f(datos[cantPuntos-1][0] + h , datos[cantPuntos-1][1] + h*datos[cantPuntos-1][2]);
 
     std::cout << "\n\n";
-    std::cout << "x\t\ty\t\tK1\t\tK2\n";
+    std::cout << "x\t\ty\t\t\tK1\t\tK2\n";
     mostrarMatriz(datos , cantPuntos , 4);
 }
 

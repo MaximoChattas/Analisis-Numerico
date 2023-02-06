@@ -48,49 +48,49 @@ build cmake_object_order_depends_target_Metodos: phony || CMakeFiles/Metodos.dir
 
 build CMakeFiles/Metodos.dir/main.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/main.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/main.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir
 
 build CMakeFiles/Metodos.dir/Raíces/Raiz.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Raíces/Raiz.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/Raíces/Raiz.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Raíces
 
 build CMakeFiles/Metodos.dir/Sistemas_de_Ecuaciones/SistEcuaciones.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Sistemas$ de$ Ecuaciones/SistEcuaciones.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/Sistemas_de_Ecuaciones/SistEcuaciones.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Sistemas_de_Ecuaciones
 
 build CMakeFiles/Metodos.dir/Interpolación_de_Polinomios/Interpolacion.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Interpolación$ de$ Polinomios/Interpolacion.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/Interpolación_de_Polinomios/Interpolacion.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Interpolación_de_Polinomios
 
 build CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Derivación$ Numérica/Derivacion.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Derivación_Numérica
 
 build CMakeFiles/Metodos.dir/Funciones_Matriz/funcionesMatriz.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Funciones$ Matriz/funcionesMatriz.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/Funciones_Matriz/funcionesMatriz.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Funciones_Matriz
 
 build CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Integración$ Numérica/Integracion.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Integración_Numérica
 
 build CMakeFiles/Metodos.dir/Ecuaciones_Diferenciales/EcuacionesDiferenciales.cpp.o: CXX_COMPILER__Metodos_Debug /Users/maxichattas/Documents/UCC/2º$ Año/Análisis$ Numérico/Métodos/Ecuaciones$ Diferenciales/EcuacionesDiferenciales.cpp || cmake_object_order_depends_target_Metodos
   DEP_FILE = CMakeFiles/Metodos.dir/Ecuaciones_Diferenciales/EcuacionesDiferenciales.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   OBJECT_FILE_DIR = CMakeFiles/Metodos.dir/Ecuaciones_Diferenciales
 
@@ -103,7 +103,7 @@ build CMakeFiles/Metodos.dir/Ecuaciones_Diferenciales/EcuacionesDiferenciales.cp
 # Link the executable Metodos
 
 build Metodos: CXX_EXECUTABLE_LINKER__Metodos_Debug CMakeFiles/Metodos.dir/main.cpp.o CMakeFiles/Metodos.dir/Raíces/Raiz.cpp.o CMakeFiles/Metodos.dir/Sistemas_de_Ecuaciones/SistEcuaciones.cpp.o CMakeFiles/Metodos.dir/Interpolación_de_Polinomios/Interpolacion.cpp.o CMakeFiles/Metodos.dir/Derivación_Numérica/Derivacion.cpp.o CMakeFiles/Metodos.dir/Funciones_Matriz/funcionesMatriz.cpp.o CMakeFiles/Metodos.dir/Integración_Numérica/Integracion.cpp.o CMakeFiles/Metodos.dir/Ecuaciones_Diferenciales/EcuacionesDiferenciales.cpp.o
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Metodos.dir
   POST_BUILD = :
   PRE_LINK = :
